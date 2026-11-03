@@ -1,0 +1,191 @@
+:root {
+  --bg: #14141f;
+  --panel: #1b1e3a;
+  --panel-border: #2a2e52;
+  --text: #e6e8f5;
+  --muted: #8a8fb3;
+  --ok: #3ddc84;
+  --warn: #f5b942;
+  --bad: #ff4d5e;
+  --mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+  --sans: "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  padding: 24px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.accent {
+  color: var(--ok);
+}
+
+/* Цвет статуса задаётся одной переменной --status, её подхватывают точки и значения */
+[data-status="ok"] { --status: var(--ok); }
+[data-status="warn"] { --status: var(--warn); }
+[data-status="bad"] { --status: var(--bad); }
+
+.dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--status, var(--panel-border));
+  box-shadow: 0 0 8px var(--status, transparent);
+}
+
+.panel {
+  padding: 20px 24px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+}
+
+/* Верхняя плашка: CPU/GPU слева, имя ПК и версия справа */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px 32px;
+  margin-bottom: 16px;
+}
+
+.gauges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 40px;
+}
+
+.gauge {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.gauge-label {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.gauge-temp {
+  color: var(--status, var(--text));
+  font-family: var(--mono);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.gauge-load {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 16px;
+}
+
+.host {
+  display: flex;
+  gap: 24px;
+  color: var(--ok);
+  font-family: var(--mono);
+  font-size: 15px;
+}
+
+/* Две колонки: System Information и Network */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.panel-title {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.panel-subtitle {
+  margin: 20px 0 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.rows {
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row-label {
+  min-width: 0;
+  font-weight: 600;
+}
+
+.row-value {
+  margin-left: auto;
+  color: var(--status, var(--ok));
+  font-family: var(--mono);
+  font-size: 14px;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+@media (max-width: 800px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 16px;
+  }
+
+  .host {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

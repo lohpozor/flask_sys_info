@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carv Sys</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Carv <span class="accent">Sys</span></div>
+  </header>
+
+  <section class="panel topbar">
+    <div class="gauges">
+      <div class="gauge" id="cpu">
+        <span class="gauge-label">CPU</span>
+        <span class="gauge-temp">—</span>
+        <span class="gauge-load">—</span>
+      </div>
+      <div class="gauge" id="gpu">
+        <span class="gauge-label">GPU</span>
+        <span class="gauge-temp">—</span>
+        <span class="gauge-load">—</span>
+      </div>
+    </div>
+    <div class="host">
+      <span id="hostname">—</span>
+      <span id="version">—</span>
+    </div>
+  </section>
+
+  <main class="columns">
+    <section class="panel">
+      <h2 class="panel-title">System Information</h2>
+      <ul class="rows">
+        <li class="row"><span class="dot"></span><span class="row-label">OS</span><span class="row-value" id="os">—</span></li>
+        <li class="row"><span class="dot"></span><span class="row-label">Uptime</span><span class="row-value" id="uptime">—</span></li>
+        <li class="row"><span class="dot"></span><span class="row-label">Processes</span><span class="row-value" id="processes">—</span></li>
+        <li class="row" id="memory"><span class="dot"></span><span class="row-label">Memory</span><span class="row-value">—</span></li>
+        <li class="row" id="disk"><span class="dot"></span><span class="row-label">Disk</span><span class="row-value">—</span></li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2 class="panel-title">Network</h2>
+      <ul class="rows">
+        <li class="row"><span class="dot"></span><span class="row-label">Download</span><span class="row-value" id="download">—</span></li>
+        <li class="row"><span class="dot"></span><span class="row-label">Upload</span><span class="row-value" id="upload">—</span></li>
+        <li class="row"><span class="dot"></span><span class="row-label">Received</span><span class="row-value" id="received">—</span></li>
+        <li class="row"><span class="dot"></span><span class="row-label">Sent</span><span class="row-value" id="sent">—</span></li>
+      </ul>
+      <h3 class="panel-subtitle">Interfaces</h3>
+      <ul class="rows" id="interfaces"></ul>
+    </section>
+  </main>
+
+  <footer class="footer" id="connection">
+    <span class="dot"></span>
+    <span id="connection-text">Подключение…</span>
+    <span>· Обновлено: <span id="updated">—</span></span>
+  </footer>
+
+  <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# Виртуальное окружение: восстанавливается командой pip install -r requirements.txt
+.venv/
+
+# Скомпилированный Python, создаётся автоматически при запуске
+__pycache__/
+*.py[cod]
+
+# Секреты и локальные настройки
+.env
+
+# Личные настройки редактора и Claude Code
+.vscode/
+.claude/settings.local.json
+
+# Мусор операционной системы
+Thumbs.db
+Desktop.ini
+
+# Логи
+*.log
